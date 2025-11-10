@@ -1,0 +1,55 @@
+# ----------------------------
+# OS / Editor files
+# ----------------------------
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# VS Code / IDE
+.vscode/
+.idea/
+*.code-workspace
+
+# ----------------------------
+# XAMPP / local server stuff
+# ----------------------------
+/xampp/
+/htdocs/
+*.log
+*.tmp
+
+# ----------------------------
+# PHP / Composer
+# ----------------------------
+vendor/
+composer.lock
+composer.phar
+
+# ----------------------------
+# Environment & config files
+# ----------------------------
+.env
+.env.*
+config.php
+database.php
+db_connect.php
+*.bak
+*.sql
+
+# ----------------------------
+# Cache / session / uploads
+# ----------------------------
+tmp/
+cache/
+sessions/
+uploads/
+*.bak
+*.swp
+
+# ----------------------------
+# Misc
+# ----------------------------
+node_modules/
+npm-debug.log
+yarn-error.log
+package-lock.json
