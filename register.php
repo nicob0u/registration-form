@@ -23,11 +23,10 @@ $stmt = $conn->prepare($sql);
 $stmt->bind_param("sss", $username, $email, $hashedPassword);
 
 if ($stmt->execute()) {
-  echo json_encode([
-    "id" => $stmt->insert_id,
-    "username" => $username,
-    "email" => $email
-  ]);
+  $newUserId = $stmt->insert_id;
+
+  header("Location: print-user-info.php?id=" . $newUserId);
+  exit;
 } else {
   echo "Error: " . $stmt->error;
 }
