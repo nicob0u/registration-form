@@ -15,12 +15,21 @@ if ($conn->connect_error) {
 $username = $_POST['username'];
 $email = $_POST['email'];
 $password = $_POST['password'];
+$firstName = $_POST['first-name'];
+$lastName = $_POST['last-name'];
+$phoneNumber = $_POST['phone-number'];
+$address = $_POST['address'];
+$gender = $_POST['gender'];
+$dateOfBirth = $_POST['date-of-birth'];
+
 
 $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
-$sql = "INSERT INTO users (username, email, password) VALUES (?, ?, ?)";
+$sql = "INSERT INTO users (username, email, password, first-name, last-name, phone-number,address, gender, date-of-birth) 
+VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 $stmt = $conn->prepare($sql);
-$stmt->bind_param("sss", $username, $email, $hashedPassword);
+$stmt->bind_param("sssssssss", $username, $email, $hashedPassword, $firstName, $lastName, $phoneNumber, $address,
+$gender, $dateOfBirth);
 
 if ($stmt->execute()) {
   $newUserId = $stmt->insert_id;
