@@ -15,21 +15,31 @@ if ($conn->connect_error) {
 $username = $_POST['username'];
 $email = $_POST['email'];
 $password = $_POST['password'];
-$firstName = $_POST['first-name'];
-$lastName = $_POST['last-name'];
-$phoneNumber = $_POST['phone-number'];
+$firstName = $_POST['first_name'];
+$lastName = $_POST['last_name'];
+$phoneNumber = $_POST['phone_number'];
 $address = $_POST['address'];
 $gender = $_POST['gender'];
-$dateOfBirth = $_POST['date-of-birth'];
+$dateOfBirth = $_POST['date_of_birth'];
 
 
 $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
-$sql = "INSERT INTO users (username, email, password, first-name, last-name, phone-number,address, gender, date-of-birth) 
+$sql = "INSERT INTO users (username, email, password, first_name, last_name, phone_number, address, gender, date_of_birth) 
 VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 $stmt = $conn->prepare($sql);
-$stmt->bind_param("sssssssss", $username, $email, $hashedPassword, $firstName, $lastName, $phoneNumber, $address,
-$gender, $dateOfBirth);
+$stmt->bind_param(
+  "sssssssss",
+  $username,
+  $email,
+  $hashedPassword,
+  $firstName,
+  $lastName,
+  $phoneNumber,
+  $address,
+  $gender,
+  $dateOfBirth
+);
 
 if ($stmt->execute()) {
   $newUserId = $stmt->insert_id;
