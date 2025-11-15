@@ -6,7 +6,6 @@ if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
 }
 
-// Select all relevant fields
 $sql = "SELECT id, first_name, last_name, username, email, phone_number, address, gender, date_of_birth 
         FROM users WHERE id = ?";
 $stmt = $conn->prepare($sql);
@@ -29,7 +28,6 @@ $user = $result->fetch_assoc();
       display: flex;
       justify-content: center;
       background-color: #f0f0f0;
-      /* light background to center A4 sheet */
     }
 
     .info-container {
