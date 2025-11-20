@@ -1,0 +1,225 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Courier New', monospace;
+}
+
+body {
+  /* background: linear-gradient(-45deg, #fcbce1, #fafbfd, #d6c0f3, #7b5cc5); */
+  background-size: 400% 400%;
+  animation: gradientBG 15s ease infinite;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+@property --a {
+  syntax: '<angle>';
+  inherits: true;
+  initial-value: 0deg;
+}
+
+@property --p {
+  syntax: '<percentage>';
+  inherits: true;
+  initial-value: 0%;
+}
+
+@property --c1 {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: #000;
+}
+
+@property --c2 {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: #000;
+}
+
+html {
+  --s: 80px;
+  --_g: #0000, var(--c1) 2deg calc(var(--a) - 2deg), #0000 var(--a);
+  background:
+    conic-gradient(from calc(-45deg - var(--a)/2) at top var(--p) left var(--p), var(--_g)),
+    conic-gradient(from calc(-45deg - var(--a)/2) at top var(--p) left var(--p), var(--_g)),
+    conic-gradient(from calc(45deg - var(--a)/2) at top var(--p) right var(--p), var(--_g)),
+    conic-gradient(from calc(45deg - var(--a)/2) at top var(--p) right var(--p), var(--_g)),
+    conic-gradient(from calc(-135deg - var(--a)/2) at bottom var(--p) left var(--p), var(--_g)),
+    conic-gradient(from calc(-135deg - var(--a)/2) at bottom var(--p) left var(--p), var(--_g)),
+    conic-gradient(from calc(135deg - var(--a)/2) at bottom var(--p) right var(--p), var(--_g)),
+    conic-gradient(from calc(135deg - var(--a)/2) at bottom var(--p) right var(--p), var(--_g)) var(--c2);
+  background-size: calc(2*var(--s)) calc(2*var(--s));
+  animation: m 2s infinite alternate linear;
+}
+
+@keyframes m {
+
+  0%,
+  15% {
+    --a: 135deg;
+    --p: 20%;
+    --c1: #84a1ff;
+    --c2: #FAD089;
+    background-position: 0 0, var(--s) var(--s);
+  }
+
+  45%,
+  50% {
+    --a: 90deg;
+    --p: 25%;
+    --c1: #84a1ff;
+    --c2: #FAD089;
+    background-position: 0 0, var(--s) var(--s);
+  }
+
+  50.01%,
+  55% {
+    --a: 90deg;
+    --p: 25%;
+    --c2: #84a1ff;
+    --c1: #FAD089;
+    background-position: var(--s) 0, 0 var(--s);
+  }
+
+  85%,
+  100% {
+    --a: 135deg;
+    --p: 20%;
+    --c2: #84a1ff;
+    --c1: #FAD089;
+    background-position: var(--s) 0, 0 var(--s);
+  }
+}
+
+.container {
+
+  width: 100%;
+  max-width: 400px;
+  border: 1px solid #181818;
+  padding: 40px 30px;
+  background-color: #ffffff;
+  box-shadow: 8px 8px 0px #181818;
+  position: relative;
+  border-radius: 12px;
+
+}
+
+.container::before {
+  content: '';
+  position: absolute;
+  top: 6px;
+  left: 6px;
+  right: -6px;
+  bottom: -6px;
+  border: 1px solid #181818;
+  z-index: -1;
+  border-radius: 12px;
+}
+
+h1 {
+  color: #181818;
+  margin-bottom: 30px;
+  font-size: 28px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.input-group {
+  margin-bottom: 20px;
+  position: relative;
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+  color: #181818;
+}
+
+input {
+  width: 100%;
+  padding: 12px 15px;
+  border: 2px solid #181818;
+  background-color: #ffffff;
+  font-size: 16px;
+  outline: none;
+  transition: all 0.3s;
+}
+
+input:focus {
+  box-shadow: 4px 4px 0px #181818;
+}
+
+
+button {
+  width: 100%;
+  padding: 12px;
+  background-color: #FF5E5B;
+  color: #181818;
+  border: 2px solid #181818;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: all 0.3s;
+}
+
+button:hover {
+  box-shadow: 4px 4px 0px v#181818;
+  transform: translate(-2px, -2px);
+}
+
+
+.divider {
+  display: flex;
+  align-items: center;
+  margin: 25px 0;
+  color: #181818;
+  font-weight: bold;
+}
+
+.divider::before,
+.divider::after {
+  content: "";
+  flex: 1;
+  border-bottom: 2px solid #181818;
+  margin: 0 10px;
+}
+
+.social-login {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.social-btn {
+  width: 50px;
+  height: 50px;
+  border: 2px solid #181818;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.social-btn:hover {
+  box-shadow: 4px 4px 0px #181818;
+  transform: translate(-2px, -2px);
+}
+
+.footer {
+  text-align: center;
+  margin-top: 20px;
+  color: #181818;
+}
+
+.footer a {
+  color: #181818;
+  font-weight: bold;
+  text-decoration: underline;
+}

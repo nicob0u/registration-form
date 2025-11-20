@@ -1,64 +1,230 @@
-    body {
-        font-family: Arial, sans-serif;
-        background-color: #eceff4;
-        background-image: url("data:image/svg+xml,%3Csvg width='42' height='44' viewBox='0 0 42 44' xmlns='http://www.w3.org/2000/svg'%3E%3Cg id='Page-1' fill='none' fill-rule='evenodd'%3E%3Cg id='brick-wall' fill='%2319365c' fill-opacity='0.4'%3E%3Cpath d='M0 0h42v44H0V0zm1 1h40v20H1V1zM0 23h20v20H0V23zm22 0h20v20H22V23z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Courier New', monospace;
+}
+
+body {
+    /* background: linear-gradient(-45deg, #fcbce1, #fafbfd, #d6c0f3, #7b5cc5); */
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+@property --a {
+    syntax: '<angle>';
+    inherits: true;
+    initial-value: 0deg;
+}
+
+@property --p {
+    syntax: '<percentage>';
+    inherits: true;
+    initial-value: 0%;
+}
+
+@property --c1 {
+    syntax: '<color>';
+    inherits: true;
+    initial-value: #000;
+}
+
+@property --c2 {
+    syntax: '<color>';
+    inherits: true;
+    initial-value: #000;
+}
+
+html {
+    --s: 80px;
+    --_g: #0000, var(--c1) 2deg calc(var(--a) - 2deg), #0000 var(--a);
+    background:
+        conic-gradient(from calc(-45deg - var(--a)/2) at top var(--p) left var(--p), var(--_g)),
+        conic-gradient(from calc(-45deg - var(--a)/2) at top var(--p) left var(--p), var(--_g)),
+        conic-gradient(from calc(45deg - var(--a)/2) at top var(--p) right var(--p), var(--_g)),
+        conic-gradient(from calc(45deg - var(--a)/2) at top var(--p) right var(--p), var(--_g)),
+        conic-gradient(from calc(-135deg - var(--a)/2) at bottom var(--p) left var(--p), var(--_g)),
+        conic-gradient(from calc(-135deg - var(--a)/2) at bottom var(--p) left var(--p), var(--_g)),
+        conic-gradient(from calc(135deg - var(--a)/2) at bottom var(--p) right var(--p), var(--_g)),
+        conic-gradient(from calc(135deg - var(--a)/2) at bottom var(--p) right var(--p), var(--_g)) var(--c2);
+    background-size: calc(2*var(--s)) calc(2*var(--s));
+    animation: m 2s infinite alternate linear;
+}
+
+@keyframes m {
+
+    0%,
+    15% {
+        --a: 135deg;
+        --p: 20%;
+        --c1: #84a1ff;
+        --c2: #FAD089;
+        background-position: 0 0, var(--s) var(--s);
     }
 
-    form {
-        background: white;
-        padding: 20px 30px;
-        border-radius: 10px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-        /* width: 70%; */
-        width: 400px;
+    45%,
+    50% {
+        --a: 90deg;
+        --p: 25%;
+        --c1: #84a1ff;
+        --c2: #FAD089;
+        background-position: 0 0, var(--s) var(--s);
     }
 
-    input {
-        margin-bottom: 10px;
-        padding: 8px;
-        width: 100%;
-        border: 1px solid #ccc;
-        border-radius: 4px;
+    50.01%,
+    55% {
+        --a: 90deg;
+        --p: 25%;
+        --c2: #84a1ff;
+        --c1: #FAD089;
+        background-position: var(--s) 0, 0 var(--s);
     }
 
-    .name-pair {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
+    85%,
+    100% {
+        --a: 135deg;
+        --p: 20%;
+        --c2: #84a1ff;
+        --c1: #FAD089;
+        background-position: var(--s) 0, 0 var(--s);
     }
+}
 
-    .name-pair input {
-        /* width: 150px; */
-        width: 100%;
-    }
+.container {
 
-    .gender-birth-date {
-        display: flex;
-        flex-direction: row;
-        justify-content: left;
-        align-items: center;
-    }
+    width: 100%;
+    height: 700px;
+    padding: 20px;
+    border: 1px solid #181818;
+    padding: 20px 30px;
+    background-color: #ffffff;
+    box-shadow: 8px 8px 0px #181818;
+    position: relative;
+    border-radius: 12px;
+    height: 750px;
 
-    .gender-birth-date input {
-        /* width: 150px; */
-        width: 100%;
-    }
 
-    button {
-        background-color: #0078d7;
-        color: white;
-        border: none;
-        padding: 10px;
-        width: 100%;
-        border-radius: 4px;
-        cursor: pointer;
-    }
+}
 
-    button:hover {
-        background-color: #005ea6;
-    }
+.container::before {
+    content: '';
+    position: absolute;
+    top: 6px;
+    left: 6px;
+    right: -6px;
+    bottom: -6px;
+    border: 1px solid #181818;
+    z-index: -1;
+    border-radius: 12px;
+}
+
+
+form {
+    display: flex;
+    flex-direction: column;
+    max-width: 100%;
+    box-sizing: border-box;
+    max-height: 100%;
+}
+
+input,
+button {
+    width: 100%;
+}
+
+select {
+    width: 200px;
+    display: flex;
+    text-align: center;
+}
+
+h1 {
+    color: #181818;
+    margin-bottom: 30px;
+    font-size: 28px;
+    font-weight: 700;
+    text-align: center;
+}
+
+.input-group {
+    margin-bottom: 20px;
+    position: relative;
+}
+
+label {
+    display: block;
+    margin-bottom: 0;
+    font-weight: bold;
+    color: #181818;
+}
+
+input {
+    width: 100%;
+    padding: 12px 15px;
+    border: 2px solid #181818;
+    background-color: #ffffff;
+    font-size: 16px;
+    outline: none;
+    transition: all 0.3s;
+}
+
+input:focus {
+    box-shadow: 4px 4px 0px #181818;
+}
+
+
+button {
+    width: 100%;
+    padding: 12px;
+    background-color: #FF5E5B;
+    color: #181818;
+    border: 2px solid #181818;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: all 0.3s;
+    height: 50px;
+}
+
+button:hover {
+    box-shadow: 4px 4px 0px v#181818;
+    transform: translate(-2px, -2px);
+}
+
+.name-pair {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    display: flex;
+    gap: 10px;
+}
+
+.name-pair input {
+    /* width: 150px; */
+    width: 100%;
+}
+
+.gender-birth-date {
+    /* width: 50%; */
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+}
+
+.gender-birth-date input {
+    /* width: 150px; */
+    width: 100%;
+}
+
+.gender-label {
+    margin-bottom: 10px;
+}
