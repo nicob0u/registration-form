@@ -138,9 +138,10 @@ button {
 }
 
 select {
-    width: 200px;
+    width: 230px;
     display: flex;
     text-align: center;
+    border-width: 2px;
 }
 
 h1 {
