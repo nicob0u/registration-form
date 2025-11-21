@@ -36,7 +36,7 @@ $stmt->bind_param(
 if ($stmt->execute()) {
   $newUserId = $stmt->insert_id;
 
-  header("Location: print-user-info.php?id=" . $newUserId);
+  header("Location: login.php");
   exit;
 } else {
   echo "Error: " . $stmt->error;

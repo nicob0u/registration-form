@@ -98,26 +98,16 @@ html {
 
 
 .form-container {
-    flex: 4;
+    width: 80%;
 }
 
-.side-bar {
-    flex: 3;
-    border: 2px solid #181818;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding-bottom: 30%;
-
-}
 
 
 .container {
     display: flex;
     gap: 20px;
     flex-direction: row;
-    width: 900px;
+    width: 700px;
     /* height: 700px; */
     padding: 20px;
     border: 1px solid #181818;
@@ -212,8 +202,15 @@ button {
     margin-top: 10px;
     transition: all 0.3s;
     height: 50px;
-
+    text-align: center;
+    padding-right: 30px;
 }
+
+.icon {
+    height: 15px;
+    margin-right: 10px;
+}
+
 
 button:hover {
     box-shadow: 4px 4px 0px #181818;
@@ -240,7 +237,7 @@ button:hover {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    gap: 10px;
+    gap: 35px;
 }
 
 .gender-birth-date input {
