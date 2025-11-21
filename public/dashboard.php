@@ -37,7 +37,8 @@ $newestUser = $newestRow['username'];
       <nav>
         <a href="dashboard.php" class="active"><img src="icons/house-chimney-heart.svg" class="icon" alt="Home">Home</a>
         <a href="#"><img src="icons/settings-sliders.svg" class="icon" alt="Settings">Account Settings</a>
-        <!-- <a href="#">Profile</a> -->
+        <a href="#"><img src="icons/user.svg" class="icon" alt="Profile">Profile</a>
+        <a href="#"><img src="icons/messages.svg" class="icon" alt="Messages">Messages</a>
         <a href="logout.php"><img src="icons/user-logout.svg" class="icon" alt="Logout">Logout</a>
       </nav>
     </aside>
